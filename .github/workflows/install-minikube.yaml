@@ -14,5 +14,8 @@ jobs:
         with:
           minikube version: 'v1.11.0'
           kubernetes version: 'v1.17.7'
+          start args: '--embed-certs'
+      - name: peek at kubeconfig
+        run: cat ~/.kube/config
       - name: Interact with the cluster
         run: kubectl get nodes
