@@ -17,7 +17,7 @@ jobs:
           start args: '--embed-certs'
       - name: Peek at kubeconfig
         id: kubeconfig
-        run: echo "::set-output name=config::`cat ~/.kube/config`"
+        run: a="$(cat ~/.kube/config)"; a="${a//'%'/'%25'}"; a="${a//$'\n'/'%0A'}"; a="${a//$'\r'/'%0D'}"echo "::set-output name=config::$a"
       - name: Install Istio
         uses: huang195/actions-install-istio@master
         with:
