@@ -21,7 +21,7 @@ jobs:
       - name: Install Istio
         uses: huang195/actions-install-istio@master
         with:
-          kubeconfig: "test"
+          kubeconfig: "test1"
 #          kubeconfig: "${{steps.kubeconfig.config}}"
 #      - name: Interact with the cluster
 #        run: kubectl get nodes
