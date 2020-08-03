@@ -9,19 +9,18 @@ jobs:
     steps:
 #      - name: Checkout
 #        uses: actions/checkout@v1
-#      - name: Setup Minikube
-#        uses: manusa/actions-setup-minikube@v1.1.0
-#        with:
-#          minikube version: 'v1.11.0'
-#          kubernetes version: 'v1.17.7'
-#          start args: '--embed-certs'
-#      - name: Peek at kubeconfig
-#        id: kubeconfig
-#        run: echo "::set-output name=config::`cat ~/.kube/config`"
+      - name: Setup Minikube
+        uses: manusa/actions-setup-minikube@v1.1.0
+        with:
+          minikube version: 'v1.11.0'
+          kubernetes version: 'v1.17.7'
+          start args: '--embed-certs'
+      - name: Peek at kubeconfig
+        id: kubeconfig
+        run: echo "::set-output name=config::`cat ~/.kube/config`"
       - name: Install Istio
         uses: huang195/actions-install-istio@master
         with:
-          kubeconfig: "test1"
-#          kubeconfig: "${{steps.kubeconfig.config}}"
-#      - name: Interact with the cluster
-#        run: kubectl get nodes
+          kubeconfig: "${{steps.kubeconfig.outputs.config}}"
+      - name: Interact with the cluster
+        run: kubectl get nodes
