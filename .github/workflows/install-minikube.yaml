@@ -10,7 +10,7 @@ jobs:
 #      - name: Checkout
 #        uses: actions/checkout@v1
       - name: Setup Minikube
-        uses: manusa/actions-setup-minikube@v1.1.0
+        uses: huang195/actions-setup-minikube@master
         with:
           minikube version: 'v1.11.0'
           kubernetes version: 'v1.17.7'
