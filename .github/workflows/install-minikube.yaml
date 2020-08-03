@@ -19,7 +19,7 @@ jobs:
         id: kubeconfig
         run: echo "::set-output name=config::`cat ~/.kube/config`"
       - name: Install Istio
-        uses: huang195/actions-install-istio
+        uses: huang195/actions-install-istio@master
         with:
           kubeconfig: "${{steps.kubeconfig.config}}"
       - name: Interact with the cluster
