@@ -14,15 +14,9 @@ jobs:
         with:
           minikube version: 'v1.11.0'
           kubernetes version: 'v1.17.7'
-          start args: '--embed-certs'
-      - name: Peek at kubeconfig
-        id: kubeconfig
-        run: a="$(cat ~/.kube/config)"; a="${a//'%'/'%25'}"; a="${a//$'\n'/'%0A'}"; a="${a//$'\r'/'%0D'}"; echo "::set-output name=config::$a"
-      - name: test
-        run: cat ~/.kube/config
       - name: Install Istio
-        uses: huang195/actions-install-istio@master
+        uses: huang195/actions-install-istio@v1.0.1
         with:
-          kubeconfig: "${{steps.kubeconfig.outputs.config}}"
+          istio version: '1.6.3'
       - name: Interact with the cluster
         run: kubectl get all --all-namespaces
