@@ -15,14 +15,11 @@ jobs:
           minikube version: 'v1.11.0'
           kubernetes version: 'v1.17.7'
           start args: '--embed-certs'
-      - name: Test kubectl
-        run: kubectl get all --all-namespaces
-      - name: Test kubeconfig
-        run: cat ~/.kube/config
       - name: Install Istio
         uses: huang195/actions-install-istio@v1.0.1
         with:
           istio version: '1.6.3'
-          istio args: '-c ~/.kube/config'
+        env:
+          KUBECONFIG: /home/runner/.kube/config
       - name: Interact with the cluster
         run: kubectl get all --all-namespaces
