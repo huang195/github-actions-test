@@ -16,7 +16,7 @@ jobs:
           kubernetes version: 'v1.17.7'
           start args: '--embed-certs'
       - name: test
-        run: pwd && echo $HOME && file ~/.kube/config && cat /home/runner/.kube/config
+        run: kubectl --kubeconfig=/home/runner/.kube/config get pods --all-namespaces
       - name: Install Istio
         uses: huang195/actions-install-istio@v1.0.1
         with:
