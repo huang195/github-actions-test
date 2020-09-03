@@ -22,6 +22,6 @@ jobs:
         with:
           istio version: '1.6.3'
         env:
-          KUBECONFIG: /home/runner/.kube/config
+          KUBECONFIG: '/home/runner/.kube/config'
       - name: Interact with the cluster
         run: kubectl get all --all-namespaces
